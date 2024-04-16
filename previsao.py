@@ -53,26 +53,26 @@ def evaluate_model(y_test, predictions):
     print('r²', r2)
     print(f"O MAPE é: {mape:.2f}%")
 
-def run_model(model, X_train, y_train, X_test):
+def run_model(model, X_train, y_train, X_test, tipo_scaling):
     model.fit(X_train, y_train)
     predictions = model.predict(X_test)
     print()
-    print(model)
+    print(f"{model} - {tipo_scaling}")
     evaluate_model(y_test, predictions)
 
 
-run_model(LinearRegression(), X_train, y_train, X_test)
-run_model(LinearRegression(), x_train_min_max_scaled, y_train, x_test_min_max_scaled)
-run_model(LinearRegression(), x_train_standard_scaled, y_train, x_test_standard_scaled)
+run_model(LinearRegression(), X_train, y_train, X_test, 'Sem os escalonadores')
+run_model(LinearRegression(), x_train_min_max_scaled, y_train, x_test_min_max_scaled, 'Normalização')
+run_model(LinearRegression(), x_train_standard_scaled, y_train, x_test_standard_scaled, 'Padronização')
 
-run_model(DecisionTreeRegressor(), X_train, y_train, X_test)
-run_model(DecisionTreeRegressor(), x_train_min_max_scaled, y_train, x_test_min_max_scaled)
-run_model(DecisionTreeRegressor(), x_train_standard_scaled, y_train, x_test_standard_scaled)
+run_model(DecisionTreeRegressor(), X_train, y_train, X_test, 'Sem os escalonadores')
+run_model(DecisionTreeRegressor(), x_train_min_max_scaled, y_train, x_test_min_max_scaled, 'Normalização')
+run_model(DecisionTreeRegressor(), x_train_standard_scaled, y_train, x_test_standard_scaled, 'Padronização')
 
-run_model(RandomForestRegressor(), X_train, y_train, X_test)
-run_model(RandomForestRegressor(), x_train_min_max_scaled, y_train, x_test_min_max_scaled)
-run_model(RandomForestRegressor(), x_train_standard_scaled, y_train, x_test_standard_scaled)
+run_model(RandomForestRegressor(), X_train, y_train, X_test, 'Sem os escalonadores')
+run_model(RandomForestRegressor(), x_train_min_max_scaled, y_train, x_test_min_max_scaled, 'Normalização')
+run_model(RandomForestRegressor(), x_train_standard_scaled, y_train, x_test_standard_scaled, 'Padronização')
 
-run_model(GradientBoostingRegressor(), X_train, y_train, X_test)
-run_model(GradientBoostingRegressor(), x_train_min_max_scaled, y_train, x_test_min_max_scaled)
-run_model(GradientBoostingRegressor(), x_train_standard_scaled, y_train, x_test_standard_scaled)
+run_model(GradientBoostingRegressor(), X_train, y_train, X_test, 'Sem os escalonadores')
+run_model(GradientBoostingRegressor(), x_train_min_max_scaled, y_train, x_test_min_max_scaled, 'Normalização')
+run_model(GradientBoostingRegressor(), x_train_standard_scaled, y_train, x_test_standard_scaled, 'Padronização')
